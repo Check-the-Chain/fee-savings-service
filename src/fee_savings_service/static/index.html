@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lighter Fee Savings Estimate</title>
+    <link rel="stylesheet" href="/static/app.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <div class="header">
+        <h1>Lighter Fee Savings Estimate</h1>
+        <p>Estimate Hyperliquid trading fees and compare against Lighter's zero-fee standard accounts.</p>
+      </div>
+
+      <div class="form-card">
+        <form id="lookup-form" class="lookup-form">
+          <label class="field">
+            <span>Address</span>
+            <input
+              id="address"
+              name="address"
+              type="text"
+              placeholder="0x..."
+              autocomplete="off"
+              required
+            />
+          </label>
+
+          <label class="field field-small">
+            <span>Window</span>
+            <select id="window" name="window">
+              <option value="1d">1 day</option>
+              <option value="7d" selected>7 days</option>
+              <option value="30d">30 days</option>
+              <option value="all">All time</option>
+            </select>
+          </label>
+
+          <button id="submit-button" type="submit">Estimate</button>
+        </form>
+
+        <div id="status" class="status" aria-live="polite"></div>
+      </div>
+
+      <section id="results" class="results hidden">
+        <div class="summary-card">
+          <article class="metric-card metric-card-primary">
+            <p class="metric-label">Estimated Savings</p>
+            <p id="estimated-savings" class="metric-value">--</p>
+            <p id="estimation-mode" class="metric-footnote"></p>
+          </article>
+        </div>
+
+        <div class="breakdown">
+          <div class="breakdown-header">
+            <h2>Breakdown</h2>
+            <span id="resolved-address" class="resolved-addr"></span>
+          </div>
+
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody id="estimate-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
